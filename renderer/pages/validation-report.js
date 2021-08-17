@@ -97,10 +97,9 @@ export default function ValidationReport() {
                       />
                     }
                     color={
-                      colors[
-                        // eslint-disable-next-line no-nested-ternary
-                        score <= 0.75 ? 'red' : isValidated ? 'green' : 'orange'
-                      ][500]
+                      isValidated
+                        ? colors[score <= 0.75 ? 'red' : 'green'][500]
+                        : colors.red[500]
                     }
                     placeholderColor={colors.brandGray['005']}
                   />
@@ -139,14 +138,16 @@ export default function ValidationReport() {
                       />
                     }
                     color={
-                      colors[
-                        // eslint-disable-next-line no-nested-ternary
-                        earningsScore <= 0.5
-                          ? 'red'
-                          : score < 0.75
-                          ? 'orange'
-                          : 'green'
-                      ][500]
+                      isValidated
+                        ? colors[
+                            // eslint-disable-next-line no-nested-ternary
+                            earningsScore <= 0.5
+                              ? 'red'
+                              : score < 0.75
+                              ? 'orange'
+                              : 'green'
+                          ][500]
+                        : colors.red[500]
                     }
                     placeholderColor={colors.brandGray['005']}
                   />
